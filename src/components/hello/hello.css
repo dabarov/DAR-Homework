@@ -1,0 +1,14 @@
+.hello-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hello-wrapper .avatar {
+    vertical-align: middle;
+    padding: 2em;
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+}

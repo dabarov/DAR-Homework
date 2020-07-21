@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Hello } from "./components/hello/hello";
 
 function App() {
+
+  const [clicked, setClicked] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [avatar, setAvatar] = useState<string>("");
+
+  const buttonClickLoginHandler = () => {
+    setClicked(!clicked);
+  };
+
+  const buttonClickNameHandler = () => {
+    setName("Aldiyar")
+  };
+
+  const buttonClickAvatarHandler = () => {
+    setAvatar("https://avatars1.githubusercontent.com/u/36531464?s=460&u=5020eec277211b28a767db5fa908a4c872671746&v=4")
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-wrapper">
+        {clicked ? <Hello name={name} avatar={avatar} /> : null}
+        <button className="App-login-btn" onClick={buttonClickLoginHandler}>
+          Log in
+        </button>
+
+        <button className="App-login-btn" onClick={buttonClickNameHandler}>
+          Show Name
+        </button>
+
+        <button className="App-login-btn" onClick={buttonClickAvatarHandler}>
+          Show Avatar
+        </button>
+      </div>
     </div>
   );
 }
