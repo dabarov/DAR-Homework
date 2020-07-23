@@ -1,5 +1,5 @@
 import React from "react";
-import "./hello.css";
+import "./hello.scss";
 
 export const Hello = (props: { name: string; avatar: string }) => {
   return (
