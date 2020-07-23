@@ -12,11 +12,8 @@ function App() {
     setClicked(!clicked);
   };
 
-  const buttonClickNameHandler = () => {
+  const buttonClickNameAndAvatarHandler = () => {
     setName("Aldiyar")
-  };
-
-  const buttonClickAvatarHandler = () => {
     setAvatar("https://avatars1.githubusercontent.com/u/36531464?s=460&u=5020eec277211b28a767db5fa908a4c872671746&v=4")
   };
 
@@ -28,12 +25,8 @@ function App() {
           Log in
         </button>
 
-        <button className="App-login-btn" onClick={buttonClickNameHandler}>
-          Show Name
-        </button>
-
-        <button className="App-login-btn" onClick={buttonClickAvatarHandler}>
-          Show Avatar
+        <button className="App-login-btn" onClick={buttonClickNameAndAvatarHandler}>
+          Show Name and Avatar
         </button>
       </div>
     </div>
