@@ -1,0 +1,21 @@
+.single-post {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    h1 {
+        font-size: 3rem;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    p {
+        font-size: 1.5rem;
+        text-align: justify;
+    }
+    img {
+        margin: 1rem;
+        align-self: center;
+        width: 90%;
+    }
+}
