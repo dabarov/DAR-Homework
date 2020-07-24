@@ -4,6 +4,7 @@ import "./App.scss";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { Posts } from "./pages/posts/Posts";
+import { SinglePost } from "./pages/posts/single-post/SinglePost";
 
 function App() {
   return (
@@ -27,12 +28,10 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/posts">
+            <Route exact path="/posts">
               <Posts />
             </Route>
-            <Route path="/posts/:id">
-              <Posts />
-            </Route>
+            <Route path="/posts/:postId" component={SinglePost} />
             <Route path="*">
               <h2>Not Found</h2>
             </Route>
