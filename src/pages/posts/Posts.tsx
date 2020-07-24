@@ -16,7 +16,7 @@ export const Posts: React.FunctionComponent = () => {
         {posts.map((post) => (
           <div key={post.id} className="posts-item">
             <article>
-              <h3>{post.title}</h3>
+              <h2><a href={"/posts/" + post.id}>{post.title}</a></h2>
               <div className="posts-item-text">{post.body}</div>
             </article>
           </div>

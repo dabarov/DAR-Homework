@@ -1,0 +1,32 @@
+.posts-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .posts-item {
+    background-color: #fbfbfb;
+    margin: 1rem 0rem;
+    width: 40%;
+    display: flex;
+    padding: 0.5rem;
+    box-shadow: 0px 5px 10px #aaaaaa;
+    border-radius: 0.5rem;
+    h2 {
+      text-transform: uppercase;
+      border-bottom: solid #9a9a9a;
+      border-width: thin;
+      margin: 0%;
+      text-align: center;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+    .posts-item-text {
+      font-size: 1.2rem;
+      color: gray;
+      margin: 1em;
+      text-align: justify;
+      text-transform: capitalize;
+    }
+  }
+}
