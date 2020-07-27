@@ -1,36 +1,68 @@
 import React, { useState } from "react";
 import "./Home.scss";
-import { Hello } from "../../components/hello/hello";
+// import { Hello } from "../../components/hello/hello";
 import { Button } from "../../components/button/Button";
+import { Input } from "../../components/input/Input";
+import { useHistory } from "react-router-dom";
+
+interface FormError {
+  isEmpty?: boolean;
+  isInvalid?: boolean;
+}
+
+interface UserFormError {
+  firstname: FormError;
+  lastname: FormError;
+}
 
 export const Home: React.FunctionComponent = () => {
-  const [clicked, setClicked] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
-  const [avatar, setAvatar] = useState<string>("");
+  const [userInfo, setUserInfo] = useState<{
+    firstname: string;
+    lastname: string;
+  } | null>(null);
 
-  const buttonClickLoginHandler = () => {
-    setClicked(!clicked);
-    setName("Aldiyar");
-    setAvatar(
-      "https://avatars1.githubusercontent.com/u/36531464?s=460&u=5020eec277211b28a767db5fa908a4c872671746&v=4"
-    );
+  const history = useHistory();
+
+  const changeHandler = (field: string, value: string) => {
+    console.log(field, value);
+    const newVal = {
+      ...userInfo,
+      [field]: value,
+    };
+    
+    setUserInfo(newVal as any);
   };
 
-  const buttonClickChangeName = () => {};
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log(userInfo);
+    if (userInfo?.firstname) {
+      history.push("/chat");
+    }
+  };
+
   return (
     <div className="Home">
-      {clicked ? <Hello name={name} avatar={avatar} /> : null}
       <div className="wrapper">
-        <Button
-          className="App-login-btn"
-          clickHandler={buttonClickLoginHandler}
-          text="Log in"
-        />
-        <Button
-          className="App-login-btn"
-          clickHandler={buttonClickChangeName}
-          text="Change Name"
-        />
+        <form onSubmit={submitHandler}>
+          <div className="form-group">
+            <Input
+              name="firstname"
+              placeholder="Enter your first name"
+              required={true}
+              onChange={(value) => changeHandler("firstname", value)}
+            />
+          </div>
+          <div className="form-group">
+            <Input
+              name="lastname"
+              placeholder="Enter your last name"
+              required={false}
+              onChange={(value) => changeHandler("lastname", value)}
+            />
+          </div>
+          <Button className="App-login-btn" type="submit" text="Log in" />
+        </form>
       </div>
     </div>
   );

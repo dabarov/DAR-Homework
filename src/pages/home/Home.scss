@@ -1,6 +1,7 @@
 .App-login-btn {
   border: 1px solid #e91e63;
   color: #e91e63;
+  width: 100%;
   &:hover {
     background-color: #e91e63;
     border: 1px solid #fff;
@@ -8,8 +9,22 @@
   }
 }
 .wrapper {
-    width: 100%;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.form-group {
+  margin-bottom: 1rem;
+  .form-error {
+    color: red;
+  }
+}
+
+.form-control {
+  height: 25px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 1px solid grey;
+  font-size: 1.2rem;
 }
