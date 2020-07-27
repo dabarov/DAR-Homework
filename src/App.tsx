@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { Posts } from "./pages/posts/Posts";
 import { SinglePost } from "./pages/posts/single-post/SinglePost";
+import { Chat } from "./pages/chat/Chat";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
             <li>
               <Link to="/about">About</Link>
             </li>
+            <li>
+              <Link to="/chat">Chat</Link>
+            </li>
           </ul>
         </nav>
         <div className="App-content">
@@ -32,6 +36,9 @@ function App() {
               <Posts />
             </Route>
             <Route path="/posts/:postId" component={SinglePost} />
+            <Route path="/chat">
+              <Chat />
+            </Route>
             <Route path="*">
               <h2>Not Found</h2>
             </Route>
