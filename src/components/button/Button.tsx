@@ -4,16 +4,22 @@ import "./Button.scss";
 type Props = {
   className: string;
   text: string;
-  clickHandler: () => void;
+  clickHandler?: () => void;
+  type: "button" | "submit" | "reset";
 };
 
 export const Button: React.FunctionComponent<Props> = ({
   text,
+  type,
   className,
   clickHandler,
 }) => {
   return (
-    <button className={"Button " + className} onClick={clickHandler}>
+    <button
+      type={type}
+      className={"Button " + className}
+      onClick={clickHandler}
+    >
       {text}
     </button>
   );
