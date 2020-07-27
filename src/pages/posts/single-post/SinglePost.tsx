@@ -8,13 +8,15 @@ export const SinglePost = () => {
   let { postId } = useParams();
   const [post, setPost] = useState<Post>();
   useEffect(() => {
-    getPost(postId).then((data) => setPost(data));
+    getPost(postId)
+      .then((data) => setPost(data))
+      .catch((err) => console.log(err));
   }, [postId]);
 
   return (
     <div className="single-post">
       <h1>{post?.title}</h1>
-      <img src="https://picsum.photos/1920/520" alt={post?.title}/>
+      <img src="https://picsum.photos/1920/520" alt={post?.title} />
       <div>
         By: <em>User{post?.userId}</em>
       </div>
