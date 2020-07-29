@@ -5,6 +5,7 @@ type Props = {
   placeholder: string;
   onChange?: (val: string) => void;
   required: boolean;
+  chat: boolean;
 };
 
 export const Input: React.FunctionComponent<Props> = ({
@@ -12,6 +13,7 @@ export const Input: React.FunctionComponent<Props> = ({
   placeholder,
   onChange,
   required,
+  chat,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [inputChanged, setInputChanged] = useState<boolean>(false);
@@ -38,7 +40,7 @@ export const Input: React.FunctionComponent<Props> = ({
       return;
     }
 
-    if (inputValue.match(/\s/g)) {
+    if (inputValue.match(/\s/g) && !chat) {
       setInputError({
         isEmpty: false,
         isInvalid: true,
@@ -50,10 +52,14 @@ export const Input: React.FunctionComponent<Props> = ({
       isEmpty: false,
       isInvalid: false,
     });
-  }, [inputChanged, inputValue, required]);
+  }, [inputChanged, inputValue, required, chat]);
 
   return (
     <div className="input">
+      <div className="form-error">
+        {inputError.isEmpty ? "This field is required:" : ""}
+        {inputError.isInvalid ? "Entered value is invalid:" : ""}
+      </div>
       <input
         name={name}
         type="text"
@@ -61,10 +67,6 @@ export const Input: React.FunctionComponent<Props> = ({
         placeholder={placeholder}
         onChange={(event) => changeHandler(event.target.value)}
       />
-      <div className="form-error">
-        {inputError.isEmpty ? "This field is required" : ""}
-        {inputError.isInvalid ? "Entered value is invalid" : ""}
-      </div>
     </div>
   );
 };

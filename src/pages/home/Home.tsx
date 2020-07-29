@@ -29,7 +29,7 @@ export const Home: React.FunctionComponent = () => {
       ...userInfo,
       [field]: value,
     };
-    
+
     setUserInfo(newVal as any);
   };
 
@@ -51,6 +51,7 @@ export const Home: React.FunctionComponent = () => {
               placeholder="Enter your first name"
               required={true}
               onChange={(value) => changeHandler("firstname", value)}
+              chat={false}
             />
           </div>
           <div className="form-group">
@@ -59,6 +60,7 @@ export const Home: React.FunctionComponent = () => {
               placeholder="Enter your last name"
               required={false}
               onChange={(value) => changeHandler("lastname", value)}
+              chat={false}
             />
           </div>
           <Button className="App-login-btn" type="submit" text="Log in" />
