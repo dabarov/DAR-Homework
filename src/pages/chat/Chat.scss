@@ -1,47 +1,23 @@
 .Chat {
-  background-color: lightgray;
-  padding: 1rem;
-  width: 50%;
-  align-self: center;
-  .chat-box {
-    height: 30rem;
+  .btn-wrapper {
     width: 100%;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column-reverse;
-    border: 1px solid grey;
-    background-color: white;
-    margin-top: 0%;
-    margin-bottom: 1rem;
-    .message {
-      margin: 1rem;
-      .message-author {
-        margin: 0%;
-      }
-      .message-text {
-        margin: 0%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
+    .btn {
+      border: 1px solid #e91e63;
+      color: #e91e63;
+
+      &:hover {
+        background-color: #e91e63;
+        color: #fff;
       }
     }
   }
-  .form-group {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    .form-control {
-      height: 1.7rem;
-      width: 30rem;
-      padding: 0.5em 1.5em;
-      font-size: 1.2rem;
-      outline: none;
-      border: 1px solid grey;
-      margin-right: 1rem;
-    }
-    .form-error {
-      color: red;
-    }
-    .App-login-btn {
-      display: inline-block;
-      height: 3rem;
-    }
+
+  .form-control {
+    border-color: #546e7a;
+    color: #546e7a;
   }
 }
