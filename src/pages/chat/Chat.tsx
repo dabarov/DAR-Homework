@@ -11,7 +11,7 @@ import {
 import { ChatMessages } from "./chat-messages/ChatMessages";
 
 type Props = {
-  user: UserInfo | null;
+  user?: UserInfo | null;
 };
 
 export const Chat: React.FunctionComponent<Props> = ({ user }) => {
@@ -42,6 +42,7 @@ export const Chat: React.FunctionComponent<Props> = ({ user }) => {
   };
 
   useEffect(() => {
+    socketClient.open()
     socketClient.eventEmitter.on("message", onMessage);
 
     return () => {

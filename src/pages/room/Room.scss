@@ -1,7 +1,9 @@
 .Room {
-  display: flex;
   .Chat {
     margin-left: 10px;
+  }
+  .room-wrapper {
+    display: flex;
   }
   .youtube-video {
     height: 390px;

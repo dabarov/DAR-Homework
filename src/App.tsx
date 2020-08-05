@@ -6,16 +6,8 @@ import { Posts } from "./pages/posts/Posts";
 import { SinglePost } from "./pages/posts/single-post/SinglePost";
 import { Room } from "./pages/room/Room";
 import { UserInfo } from "./types/interfaces";
-
-export const UserContext = React.createContext<UserContext>({
-  user: null,
-  setUser: () => {},
-});
-
-interface UserContext {
-  user: UserInfo | null;
-  setUser: (user: UserInfo) => void;
-}
+import { UserContext } from "./services/context";
+import { Videos } from "./pages/videos/Videos";
 
 function App() {
   const [user, setUser] = useState<UserInfo | null>(null);
@@ -32,7 +24,7 @@ function App() {
                 <Link to="/posts">Posts</Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/videos">Videos</Link>
               </li>
               <li>
                 <Link to="/room">Room</Link>
@@ -48,8 +40,11 @@ function App() {
                 <Posts />
               </Route>
               <Route path="/posts/:postId" component={SinglePost} />
-              <Route path="/room">
+              <Route path="/room/:id">
                 <Room />
+              </Route>
+              <Route path="/videos">
+                <Videos />
               </Route>
               <Route path="*">
                 <h2>Not Found</h2>
