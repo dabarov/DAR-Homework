@@ -2,7 +2,7 @@ import React from "react";
 import "./Button.scss";
 
 type Props = {
-  className: string;
+  className?: string;
   text: string;
   clickHandler?: () => void;
   type: "button" | "submit" | "reset";
