@@ -7,11 +7,7 @@ import leftIcon from "../../assets/left.svg";
 
 type Props = {
   className: string;
-<<<<<<< Updated upstream
-  text: string;
-=======
   text?: string;
->>>>>>> Stashed changes
   clickHandler?: () => void;
   type: "button" | "submit" | "reset";
   image?: number;

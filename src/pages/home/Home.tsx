@@ -5,7 +5,7 @@ import { Button } from "../../components/button/Button";
 import { Input } from "../../components/input/Input";
 import { useHistory } from "react-router-dom";
 import { UserInfo } from "../../types/interfaces";
-import { UserContext } from "../../App";
+import { UserContext } from "../../services/context";
 
 interface FormError {
   isEmpty?: boolean;
@@ -17,11 +17,13 @@ interface UserFormError {
   lastname: FormError;
 }
 
+type Props = {
+  setUser: (user: UserInfo) => void;
+};
+
 export const Home: React.FunctionComponent = () => {
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-
   const userContext = useContext(UserContext);
-
   const history = useHistory();
 
   const changeHandler = (field: string, value: string) => {
@@ -38,8 +40,8 @@ export const Home: React.FunctionComponent = () => {
     event.preventDefault();
     console.log(userInfo);
     if (userInfo?.firstname) {
-      userContext.setUser(userInfo);
-      history.push("/room");
+      userContext?.setUser(userInfo);
+      history.push("/videos");
     }
   };
 

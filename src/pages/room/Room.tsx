@@ -1,23 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import YouTube from "react-youtube";
 import { Chat } from "../chat/Chat";
 
 import "./Room.scss";
-<<<<<<< Updated upstream
-import { UserContext } from "../../App";
-
-export const Room: React.FunctionComponent = () => {
-  return (
-    <div className="Room">
-      <YouTube className="youtube-video" videoId={"8iUXJShdicY"} containerClassName="video" />
-      <UserContext.Consumer>
-        {({ user }) => <Chat user={user} />}
-      </UserContext.Consumer>
-=======
 import { RoomHeader } from "../../components/room-header/RoomHeader";
 import { UserContext } from "../../services/context";
 import { useParams } from "react-router-dom";
-import { Button, SVGButton } from "../../components/button/Button";
+import { SVGButton } from "../../components/button/Button";
 
 enum PlayerStates {
   PLAYING = "PLAYING",
@@ -89,7 +78,6 @@ export const Room: React.FunctionComponent = () => {
           {(value) => <Chat user={value?.user} />}
         </UserContext.Consumer>
       </div>
->>>>>>> Stashed changes
     </div>
   );
 };

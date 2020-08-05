@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { EventEmitter } from "events";
 import { ChatMessage, SocketClientConfig } from "../types/interfaces";
+import { v4 as uuidv4 } from "uuid";
 
 const config: SocketClientConfig = {
   url: "ws://zaaz-live.dar-dev.zone",
   reconnect: true,
-  userId: "Aldiyar",
+  userId: uuidv4(),
   room: "DAR123",
 };
 
@@ -19,7 +20,7 @@ class SocketClient {
   eventEmitter = new EventEmitter();
 
   constructor(private config: SocketClientConfig) {
-    this.init(config);
+    this.init();
   }
 
   static getInstance(config: SocketClientConfig) {
@@ -29,9 +30,9 @@ class SocketClient {
     return this.instance;
   }
 
-  init(config: SocketClientConfig) {
+  init() {
     this.socket = new WebSocket(
-      `${config.url}?room=${config.room}&userId=${config.userId}`
+      `${this.config.url}?room=${this.config.room}&userId=${this.config.userId}`
     );
     this.socket.addEventListener("close", () => this.onClose());
     this.socket.addEventListener("open", () => this.onOpen());
@@ -45,7 +46,7 @@ class SocketClient {
     }
     if (this.config.reconnect) {
       this.reconnectTimeout = setTimeout(() => {
-        this.init(this.config);
+        this.init();
       }, 5000);
     }
   }
@@ -65,6 +66,11 @@ class SocketClient {
     this.socket?.close();
   }
 
+  open() {
+    if (this.socket?.readyState === WebSocket.CLOSED) {
+      this.init();
+    }
+  }
   sendMessage(text: string) {
     const event = "message";
     this.socket?.send(JSON.stringify({ event, data: text }));
@@ -89,7 +95,7 @@ export function useWebSocket(externalConfig?: Partial<SocketClientConfig>) {
 
   useEffect(() => {
     setSocketClient(SocketClient.getInstance(conf));
-  }, [conf]);
+  }, [socketClient?.socket]);
 
   return socketClient;
 }
