@@ -7,4 +7,13 @@
     height: 390px;
     width: 640px;
   }
+  .video-btn {
+    margin: 1rem;
+    border: 1px solid #e91e63;
+    transition-property: border;
+    transition-duration: 100ms;
+    &:hover {
+      border: 2px solid #e91e63;
+    }
+  }
 }
