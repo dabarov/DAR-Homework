@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 type Props = {
   name: string;
   placeholder: string;
+  value?: string;
   onChange?: (val: string) => void;
   required: boolean;
   chat: boolean;
@@ -11,6 +12,7 @@ type Props = {
 export const Input: React.FunctionComponent<Props> = ({
   name,
   placeholder,
+  value,
   onChange,
   required,
   chat,
@@ -28,11 +30,14 @@ export const Input: React.FunctionComponent<Props> = ({
       onChange(value);
     }
   };
+
   useEffect(() => {
     setInputChanged(true);
+
     if (!inputChanged) {
       return;
     }
+
     if (required && !inputValue) {
       setInputError({
         isEmpty: true,
@@ -63,6 +68,7 @@ export const Input: React.FunctionComponent<Props> = ({
       <input
         name={name}
         type="text"
+        value={value}
         className="form-control"
         placeholder={placeholder}
         onChange={(event) => changeHandler(event.target.value)}
